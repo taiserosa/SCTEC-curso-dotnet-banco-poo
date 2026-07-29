@@ -11,6 +11,7 @@ namespace BancoPOO
         // construtores
         public Conta()
         {
+            NumeroConta = new Random().Next();
         }
         public Conta(string titular)
         {
@@ -29,13 +30,11 @@ namespace BancoPOO
         {
             if (valor > saldo)
             {
-                Console.WriteLine("Saldo insuficientepara saque!");
-            } else
-            {
-                Transacao saque = new Transacao(valor, "Saque");
-                transacoes.Add(saque);
-                saldo -= valor;
+                Console.WriteLine("Saldo insuficiente para saque!");
             }
+            Transacao saque = new Transacao(valor, "Saque");
+            transacoes.Add(saque);
+            saldo -= valor;
         } 
 
         public decimal ObterSaldo()
