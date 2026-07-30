@@ -4,7 +4,8 @@ namespace BancoPOO
     {
         // atributos
         public int NumeroConta { get; set; }
-        public string Titular { get; set; }
+        public Cliente Titular { get; set; }
+        public Funcionario Gerente { get; set; }
         private decimal saldo;
         private List<Transacao> transacoes = new List<Transacao>();
 
@@ -13,10 +14,11 @@ namespace BancoPOO
         {
             NumeroConta = new Random().Next();
         }
-        public Conta(string titular)
+        public Conta(Cliente titular, Funcionario gerente)
         {
             NumeroConta = new Random().Next();
             Titular = titular;
+            Gerente = gerente;
         }
 
         // métodos
@@ -50,10 +52,10 @@ namespace BancoPOO
             }
         }
 
-        public void MostrarInfo()
+        public void ImprimirExtrato()
         {
+            Titular.ImprimirCliente();
             Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-            Console.WriteLine($"Titular: {Titular}");
             Console.WriteLine($"Número da conta: {NumeroConta}");
             Console.WriteLine($"Saldo: {saldo}");
             ImprimirTransacoes();

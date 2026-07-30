@@ -1,20 +1,37 @@
 ﻿using BancoPOO;
 
-var conta1 = new Conta("Taíse");
 
-conta1.Depositar(400);
-conta1.Sacar(100);
-conta1.MostrarInfo();
-conta1.ImprimirTransacoes();
+Funcionario funcionario1 = new Funcionario();
+funcionario1.PreencherFuncionario();
+funcionario1.ImprimirFuncionario();
 
-var conta2 = new Conta("Tânia");
 
-conta2.Depositar(800);
-conta2.Sacar(350);
-conta2.MostrarInfo();
-conta2.ImprimirTransacoes();
+Cliente cliente1 = new Cliente();
+cliente1.PreencherCliente();
+cliente1.ImprimirCliente();
+
+Cliente cliente2 = new Cliente();
+cliente2.PreencherCliente();
+cliente2.ImprimirCliente();
+
+
+
+var conta1 = new Conta(cliente1, funcionario1);
+
+conta1.Depositar(1000);
+conta1.Sacar(500);
+conta1.ImprimirExtrato();
+
+
+var conta2 = new Conta(cliente2, funcionario1);
+
+conta2.Depositar(2000);
+conta2.Sacar(500);
+conta2.ImprimirExtrato();
+
 
 var saldoConta1 = conta1.ObterSaldo();
-Console.WriteLine($"O saldo da conta 1 é igual a {saldoConta1}");
-conta1.Depositar(200);
-conta1.MostrarInfo();
+Console.WriteLine($"O saldo da conta de {conta1.Titular.Nome} é igual a {saldoConta1}");
+
+conta1.Depositar(5000);
+conta1.ImprimirExtrato();
