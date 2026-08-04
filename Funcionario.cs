@@ -10,41 +10,26 @@ namespace BancoPOO
             Codigo = new Random().Next();
         }
 
-        public void PreencherFuncionario()
+        public static Funcionario CriarPreencherFuncionario()
         {
-            Console.WriteLine($"Informe o nome do funcionário: ");
-            Nome = Console.ReadLine();
-
-            Console.WriteLine($"Informe o CPF do funcionário: ");
-            Cpf = Console.ReadLine();
-            while (!ValidarCpf(Cpf))
-            {
-                Console.WriteLine("CPF inválido! Digite novamente!");
-                Cpf = Console.ReadLine();
-            }
-
-            Console.WriteLine($"Informe o telefone do funcionário: ");
-            Telefone = Console.ReadLine();
-
-            Console.WriteLine($"Informe o e-mail do funcionário: ");
-            Email = Console.ReadLine();
-            while (!ValidarEmail())
-            {
-                Console.WriteLine("E-mail inválido! Digite novamente!");
-                Email = Console.ReadLine();
-            }
-
-            Console.WriteLine($"Informe a função do funcionário: ");
-            Funcao = Console.ReadLine();
+            Funcionario funcionarioObj = new Funcionario();
+            funcionarioObj.Preencher();
+            return funcionarioObj;
         }
 
-        public void ImprimirFuncionario()
+        public override void Preencher()
         {
-            Console.WriteLine("=-=-=-= Dados do funcionário =-=-=-=");
-            Console.WriteLine($"Nome: {Nome}");
-            Console.WriteLine($"CPF: {Cpf}");
-            Console.WriteLine($"Telefone: {Telefone}");
-            Console.WriteLine($"E-mail: {Email}");
+            Console.WriteLine("=-=-=-= Cadastro do Funcionário =-=-=-=");
+            base.Preencher();
+            Console.WriteLine("Digite a função: ");
+            Funcao = Console.ReadLine();
+            Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+        }
+
+        public override void Imprimir()
+        {
+            base.Imprimir();
+            Console.WriteLine($"Código: {Codigo}");
             Console.WriteLine($"Função: {Funcao}");
         }
     }

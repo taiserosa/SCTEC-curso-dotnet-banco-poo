@@ -16,7 +16,6 @@ namespace BancoPOO
         public void ImprimirTransacao()
         {
             Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-            Console.WriteLine("Transações: ");
             Console.WriteLine($"Valor: {Valor}");
             Console.WriteLine($"Tipo: {Tipo}");
             Console.WriteLine($"Data: {Data}");

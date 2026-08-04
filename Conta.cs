@@ -45,7 +45,6 @@ namespace BancoPOO
         }
         public void ImprimirTransacoes()
         {
-            Console.WriteLine("Transações: ");
             foreach(var transacao in transacoes)
             {
                 transacao.ImprimirTransacao();
@@ -54,10 +53,11 @@ namespace BancoPOO
 
         public void ImprimirExtrato()
         {
-            Titular.ImprimirCliente();
+            Titular.Imprimir();
             Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
             Console.WriteLine($"Número da conta: {NumeroConta}");
             Console.WriteLine($"Saldo: {saldo}");
+            Console.WriteLine("Transações: ");
             ImprimirTransacoes();
             Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
         }

@@ -1,5 +1,7 @@
 namespace BancoPOO
 {
+    // modeficador abstract impede que seja possível gerar instâncias dessa classe, 
+    // ficando somente como uma referência de herança
     public abstract class Pessoa
     {
         public string Nome { get; set; }
@@ -65,5 +67,41 @@ namespace BancoPOO
 
             return cpf.EndsWith(digito);
         }
+        // métodos abstratos não tem corpo e obrigam os filhos a implementá-los.
+        // public abstract void Preencher();
+        // public abstract void Imprimir();
+
+
+        public virtual void Preencher()
+        {
+            Console.WriteLine("Digite o nome: ");
+            Nome = Console.ReadLine();
+            
+            Console.WriteLine("Digite o telefone: ");
+            Telefone = Console.ReadLine();
+
+            Console.WriteLine("Digite o e-mail: ");
+            Email = Console.ReadLine();
+            while (!ValidarEmail())
+            {
+                Console.WriteLine("E-mail inválido! Digite novamente!");
+                Email = Console.ReadLine();
+            }
+
+            Console.WriteLine($"Informe o CPF do cliente: ");
+            Cpf = Console.ReadLine();
+            while (!ValidarCpf(Cpf))
+            {
+                Console.WriteLine("CPF inválido! Digite novamente!");
+                Cpf = Console.ReadLine();
+            }
+        }
+        public virtual void Imprimir()
+        {
+            Console.WriteLine($"Nome: {Nome}");
+            Console.WriteLine($"CPF: {Cpf}");
+            Console.WriteLine($"Telefone: {Telefone}");
+            Console.WriteLine($"E-mail: {Email}");
+        } 
     }
 }

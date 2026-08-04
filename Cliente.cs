@@ -4,48 +4,28 @@ namespace BancoPOO
     {
         public string Endereco { get; set; }
 
-        public bool ValidaCpf()
+        public static Cliente CriarPreencherCliente()
         {
-            return true;
+            Cliente clienteObj = new Cliente();
+            clienteObj.Preencher();
+            return clienteObj;
         }
 
-        public void PreencherCliente()
+        public override void Preencher()
         {
-            Console.WriteLine($"Informe o nome do cliente: ");
-            Nome = Console.ReadLine();
-
-            Console.WriteLine($"Informe o CPF do cliente: ");
-            Cpf = Console.ReadLine();
-            while (!ValidaCpf())
-            {
-                Console.WriteLine("CPF inválido! Digite novamente!");
-                Cpf = Console.ReadLine();
-            }
-
-            Console.WriteLine($"Informe o endereço do cliente: ");
+            Console.WriteLine("=-=-=-= Cadastro do cliente =-=-=-=");
+            base.Preencher();
+            Console.WriteLine("Digite o endereço: ");
             Endereco = Console.ReadLine();
-
-            Console.WriteLine($"Informe o telefone do cliente: ");
-            Telefone = Console.ReadLine();
-
-            Console.WriteLine($"Informe o e-mail do cliente: ");
-            Email = Console.ReadLine();
-            while (!ValidarEmail())
-            {
-                Console.WriteLine("E-mail inválido! Digite novamente!");
-                Email = Console.ReadLine();
-            }
-
+            Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
         }
 
-        public void ImprimirCliente()
+        public override void Imprimir()
         {
             Console.WriteLine("=-=-=-= Dados do cliente =-=-=-=");
-            Console.WriteLine($"Nome: {Nome}");
-            Console.WriteLine($"CPF: {Cpf}");
+            base.Imprimir();
             Console.WriteLine($"Endereço: {Endereco}");
-            Console.WriteLine($"Telefone: {Telefone}");
-            Console.WriteLine($"E-mail: {Email}");
+            Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
         }
     }
 }
